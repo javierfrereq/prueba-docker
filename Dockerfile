@@ -8,12 +8,9 @@ MAINTAINER Freddy Javier Frere Quintero <javierfrereq@gmail.com>
 # Update CentOS 7
 RUN yum update -y && yum upgrade -y
 
-# install http 
-RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
-
 # install httpd 
-RUN yum -y install httpd vim-enhanced bash-completion unzip
-
+#RUN yum -y install httpd vim-enhanced bash-completion unzip
+RUN yum -y install httpd; yum clean all; systemctl enable httpd.service
 # install mysql 
 RUN yum install -y mysql mysql-server
 RUN echo "NETWORKING=yes" > /etc/sysconfig/network
