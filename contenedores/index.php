@@ -1,1 +1,1 @@
-<?php echo '"{status:ok}"'; ?>
+<?php echo '{"status:ok"}'; ?>
