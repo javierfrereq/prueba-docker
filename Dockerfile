@@ -12,6 +12,7 @@ RUN rm -rf /var/lib/apt/lists/*
 RUN /usr/sbin/a2dismod 'mpm_*' 
 RUN /usr/sbin/a2enmod mpm_prefork
 
+RUN apt-get update
 RUN apt-get -y install php php-mysql libapache2-mod-php 
 RUN apt-get clean 
 RUN rm -r /var/lib/apt/lists/*
