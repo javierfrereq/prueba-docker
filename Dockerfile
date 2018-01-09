@@ -36,7 +36,7 @@ RUN yum install -y php php-mysql php-devel php-gd php-pecl-memcache php-pspell p
 # RUN mkdir -p /root/.ssh && touch root/.ssh/authorized_keys && chmod 700 /root/.ssh
 #ADD id_rsa.pub /root/.ssh/authorized_keys 
 
-ADD phpinfo.php /var/www/html/
+#ADD phpinfo.php /var/www/html/
 #ADD supervisord.conf /etc/
 
 EXPOSE 22 80 443 
