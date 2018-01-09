@@ -9,9 +9,12 @@ RUN apt-get update
 RUN apt-get -y install apache2
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
-RUN /usr/sbin/a2dismod 'mpm_*' && /usr/sbin/a2enmod mpm_prefork
+RUN /usr/sbin/a2dismod 'mpm_*' 
+RUN /usr/sbin/a2enmod mpm_prefork
 
-RUN apt-get update && apt-get -y install php php-mysql libapache2-mod-php && apt-get clean && rm -r /var/lib/apt/lists/*
+RUN apt-get -y install php php-mysql libapache2-mod-php 
+RUN apt-get clean 
+RUN rm -r /var/lib/apt/lists/*
 
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
@@ -23,7 +26,7 @@ RUN /usr/sbin/a2enmod ssl
 # Puerto para conectarnos
 EXPOSE 22 80 443 
 
-# Devolvemos el Estatus "OK"
+# Devolvemos el status "OK"
 RUN rm /var/www/html/index.html
 COPY contenedores/index.php /var/www/html/
 COPY contenedores/index.php /var/www/html/status/
