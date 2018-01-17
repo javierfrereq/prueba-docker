@@ -4,6 +4,8 @@ FROM ubuntu:17.04
 # Persona quien creo la receta o imagen. 
 MAINTAINER Freddy Javier Frere Quintero <javierfrereq@gmail.com>
 
+WORKDIR /app
+
 #Ejecutar comandos dentro del contenedor. 
 RUN apt-get update
 RUN apt-get -y install apache2
@@ -26,10 +28,10 @@ EXPOSE 22 80 443
 
 # Devolvemos el status "OK"
 RUN rm /var/www/html/index.html
-COPY contenedores/index.php /var/www/html/
-COPY contenedores/index.php /var/www/html/status/
+COPY contenedores/index.php /app
+# COPY contenedores/index.php /var/www/html/status/
 
 # Inicializar el contenedor apartir de la imagen
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
-
+CMD ["index.php"]
 
