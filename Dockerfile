@@ -1,9 +1,18 @@
-FROM php:7.0-apache
+FROM python:alpine
 
-MAINTAINER Freddy Javier Frere Quintero <javierfrereq@gmail.com>
+MAINTAINER FREDDY JAVIER FRERE QUINTERO
 
-EXPOSE 80 
+RUN apk update && apk upgrade 
+RUN apk add git
 
-COPY contenedores/index.php /var/www/html/
+RUN pip3 install flask pytest boto3
 
+WORKDIR /app
 
+COPY contenedores/servicio.py /app
+
+EXPOSE 5000
+
+ENTRYPOINT ["python"]
+
+CMD ["python -m servicio"]
